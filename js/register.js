@@ -13,7 +13,10 @@ T
       type: 'POST',
       data: formData,
       success: function(response) {
-        // Handle the response from the server
+        if (response == 'success') {
+            
+          window.location.href = 'login.html'; 
+        }
         alert(response);
       }
     });
