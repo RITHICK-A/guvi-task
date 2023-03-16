@@ -2,10 +2,7 @@ $(document).ready(function() {
     $('#login-form').submit(function(event) {
       event.preventDefault(); 
       if(validateForm()){
-      
-
       var formData = $(this).serialize();
-  
       $.ajax({
         type: 'POST',
         url: '../php/login.php', 

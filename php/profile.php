@@ -1,14 +1,30 @@
-<?php 
+<?php
 
 
-$db = mysqli_connect("localhost", "user", "password", "database_name");
+$url = 'mongodb://localhost:27017';
+$dbName = 'userdetails';
 
-if (isset($_POST['submit_update'])) {
 
-    $name = $_POST['name'];
-    $age = $_POST['age'];
-    $user_id = $_SESSION['user_id'];
-    $query = "UPDATE users SET  name = '$name' age='$age',  WHERE id = '$user_id'";
-    mysqli_query($db, $query);
+$client = new Mongodb\Client($url);
+
+
+$users = $client->selectCollection($dbName, 'users');
+
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+
+  $userData = [
+    'name' => $_POST['name'],
+    'age' => $_POST['age'],
+  ];
+
+  
+  $result = $users->insertOne($userData);
+
+  if ($result->getInsertedCount() === 1) {
+    echo 'User created successfully';
+  } else {
+    echo 'Failed to create user';
+  }
 }
 ?>

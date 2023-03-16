@@ -1,13 +1,13 @@
 $(document).ready(function() {
   $('#register-form').on('submit',function(event) {
-    // Prevent the form from submitting normally
+
     event.preventDefault();
 T
-    // Serialize the form data
+  
     if (validateForm()) {
     var formData = $(this).serialize();
 
-    // Send the form data to the server
+    
     $.ajax({
       url: '../php/register.php',
       type: 'POST',
