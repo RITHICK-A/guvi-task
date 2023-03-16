@@ -9,7 +9,7 @@ T
 
     // Send the form data to the server
     $.ajax({
-      url: '/php/register.php',
+      url: '../php/register.php',
       type: 'POST',
       data: formData,
       success: function(response) {

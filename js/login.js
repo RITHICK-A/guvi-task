@@ -1,5 +1,6 @@
 $(document).ready(function() {
     $('#login-form').submit(function(event) {
+      if(validateForm()){
       event.preventDefault(); 
   
 
@@ -23,6 +24,15 @@ $(document).ready(function() {
           $('#error-message').html('Something went wrong. Please try again later.');
         }
       });
-    });
+    }
+   });
   });
-  
+  function validateForm(){
+    var username = document.forms[0].username.value;
+    var password = document.forms[0].password.value;
+    
+    if(username == "" || password == ""){
+      alert("Please enter a username and password.");
+      return false;
+    }
+  }
