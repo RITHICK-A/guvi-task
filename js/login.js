@@ -1,14 +1,14 @@
 $(document).ready(function() {
     $('#login-form').submit(function(event) {
-      if(validateForm()){
       event.preventDefault(); 
-  
+      if(validateForm()){
+      
 
       var formData = $(this).serialize();
   
       $.ajax({
         type: 'POST',
-        url: '/php/login.php', 
+        url: '../php/login.php', 
         data: formData,
         success: function(response) {
           if (response == 'success') {
